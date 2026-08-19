@@ -2,7 +2,8 @@
 tags
 
 ## Dataset Curation
-started off just retraining 
+### V1: NA Birds 
+Originally thought of this as the ideal dataset as in contained 
 
 lowest data cleaning/labeling effort 
 
