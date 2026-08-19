@@ -1,6 +1,8 @@
 # YOLO11n-Fine-Tune-Birds
 tags
 
+## Dataset Curation
+started off just retraining 
 
 lowest data cleaning/labeling effort 
 
