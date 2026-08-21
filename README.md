@@ -17,7 +17,7 @@ This project explores the possibility to pushes a single-class edge-ready **YOLO
 
 * **Target Architecture:** `YOLO11n` (Nano) for ultra-low-power edge inference.
 * **Core Benchmark:** Outperform standard baseline `YOLO11s` / `YOLO11m` on ALL metrics.
-* **Methodology:** Systematic custom data curation $\to$ hyper-parameter ablation $\to$ intermediate feature knowledge distillation (KD).
+* **Methodology:** Systematic custom data curation $\to$ hyperparameter & augmentation ablation $\to$ intermediate feature knowledge distillation (KD).
 
 ---
 
