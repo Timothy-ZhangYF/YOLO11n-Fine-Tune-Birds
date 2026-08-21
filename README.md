@@ -126,7 +126,7 @@ Inference latency was benchmarked at native $640\text{px}$ resolution on an **NV
 | **YOLO11s (COCO Baseline)** | 9.4M | 0.936 | 0.789 | 0.874 | 0.667 | 7.37 |
 | **YOLO11m (COCO Baseline)** | 20.0M | 0.941 | 0.818 | 0.888 | 0.693 | 21.53 |
 | **YOLO11l (COCO Baseline)** | 25.3M | 0.953 | 0.817 | 0.901 | 0.711 | 26.54 |
-| **YOLO11n (Fine-Tuned - Ours)** | **2.6M** | **0.947** | **0.805** | **0.886** | **0.700** | **3.15** |
+| **YOLO11n (Fine-Tuned)** | **2.6M** | **0.947** | **0.805** | **0.886** | **0.700** | **3.15** |
 
 
 ### Key Takeaways
