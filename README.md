@@ -87,6 +87,7 @@ Given the ~12.2k image volume, training was conducted with an **unfrozen backbon
 ---
 
 ## Results & Benchmark
+Running inference on an Nvidia T4 GPU over the validation dataset consisting of all 125 of the COCO val birds
 
 | Model | Parameters | Precision | Recall | mAP@50 | mAP@50-95 | Inference Time (ms/img) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
