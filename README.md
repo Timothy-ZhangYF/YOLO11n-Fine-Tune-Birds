@@ -16,7 +16,7 @@ Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters)
 This project explores the possibility to pushes a single-class edge-ready **YOLO11n** to match and surpass baseline general purpose **YOLO11s** and **YOLO11m** performance while remaining lightweight enough for MCU/SBC deployment (such as a Raspberry Pi). Birds represent a challenging computer vision target due to extreme variations in morphology, plumage patterns, pose, scale (macro close-ups vs. distant flock specks), and occlusion in foliage. 
 
 * **Target Architecture:** `YOLO11n` (Nano) for ultra-low-power edge inference.
-* **Core Benchmark:** Outperform standard baseline `YOLO11s` / `YOLO11m` on ALL metrics.
+* **Core Benchmark:** Outperform standard baseline `YOLO11s` / `YOLO11m` on mAP50 & mAP50-95.
 * **Methodology:** Systematic custom data curation $\to$ hyperparameter & augmentation ablation $\to$ intermediate feature knowledge distillation (KD).
 
 ---
@@ -69,26 +69,30 @@ Achieving robust generalizability required building a dataset that balances taxo
 Given the ~12.2k image volume, training was conducted with an **unfrozen backbone** (`freeze=0`) to allow low-level convolutional kernels and high-level attention heads to specialize fully on bird feature maps.
 
 ### 2. Hyperparameter & Loss Alignment
-* **Optimizer Stability:** Lowered initial learning rates by an order of magnitude (`lr0=0.001` for MuSGD / `0.0001` for AdamW) to eliminate warmup shock and prevent catastrophic forgetting on pretrained weights.
+* **Optimizer Stability:** Lowered initial learning rates by an order of magnitude (`lr0=0.001` for MuSGD / `0.0001` for AdamW) to eliminate warmup shock and prevent catastrophic forgetting on pretrained weights. MuSGD was selected as it produced ~+1% better mAP scores at the cost of slightly slower training. 
 * **Domain-Specific Augmentation:**
   * *Spatial Restraint:* Restricted non-physical distortions (`flipud=0.0`, `degrees=0.0`, `perspective=0.0`). Birds rarely appear inverted or geometrically sheared in field conditions.
-  * *Scale Protection:* Capped `scale=0.3` and stabilized `mosaic=0.5` (`close_mosaic=0`) to prevent distant flock targets from shrinking subpixel.
+  * *Scale Protection:* Capped `scale=0.5` and stabilized `mosaic=0.6` (`close_mosaic=0`) to prevent distant flock targets from shrinking subpixel.
   * *Occlusion Regularization:* Tuned `erasing=0.1` and subtle HSV color jitter to simulate foliage occlusion and changing outdoor lighting conditions without destroying small bounding boxes.
+
 
 ---
 
-## 🔬 Knowledge Distillation Pipeline *(WIP)*
+## Results & Benchmark
+
+
+---
+
+## Knowledge Distillation Pipeline *(WIP)*
 
 To maximize student performance without adding runtime inference latency, training incorporates feature-based Knowledge Distillation (KD):
 
 1. **Teacher Model:** Train an optimized `YOLO11m` (Medium, ~20M params) at $640\text{px}$ using identical dataset constraints to act as a high-capacity spatial feature reference.
 2. **Student Alignment:** Train `YOLO11n` using intermediate neck-layer feature alignment (`dis=6.0`), forcing the Nano student to inherit the teacher’s sharp boundary definitions and low-contrast target heatmaps.
 
-*[IMAGE PLACEHOLDER: Diagram of Knowledge Distillation architecture illustrating feature map alignment between YOLO11m Teacher and YOLO11n Student]*
-
 ---
 
-## 🛠️ Tech Stack & Tools
+## Tech Stack & Tools
 
 * **Frameworks:** Ultralytics YOLO11, PyTorch, CUDA
 * **Hardware:** NVIDIA A100 SXM4 (Cloud Training) $\to$ Target: ARM-based Edge SBCs
