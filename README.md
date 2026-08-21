@@ -86,27 +86,6 @@ Given the ~12.2k image volume, training was conducted with an **unfrozen backbon
 
 ---
 
-## Results & Benchmark
-
-validation dataset consists of all 125 COCO bird val split, 1000 randomly selected NABirds/OIV7, and 100 background images.
-
-Running inference on an Nvidia T4 GPU over the validation split:
-
-| Model | Parameters | Precision | Recall | mAP@50 | mAP@50-95 | Inference Time (ms/img) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **YOLO11n (Baseline)** | 2.6M | 0.904 | 0.735 | 0.834 | 0.610 | 3.26 |
-| **YOLO11s (Baseline)** | 9.4M | 0.936 | 0.789 | 0.874 | 0.667 | 7.37 |
-| **YOLO11m (Baseline)** | 20.0M | 0.941 | 0.818 | 0.888 | 0.693 | 21.53 |
-| **YOLO11l (Baseline)** | 25.3M | 0.953 | 0.817 | 0.901 | 0.711 | 26.54 |
-| **YOLO11n (Fine-Tuned - Ours)** | **2.6M** | **0.947** | **0.805** | **0.886** | **0.700** | **3.15** |
-
-While the original goal was just to beat YOLO11s, the fine-tuned single-class model was able to match, and in some areas bet the much larger YOLO11m model. 
-
-this shows promise and the next step is to properly beat the m model and maybe even reach the l model, pushing this hyper-lightweight yolo11n model to the limit
-
-
----
-
 ## Empirical Results & Standalone Benchmarks
 
 ### Validation Setup
