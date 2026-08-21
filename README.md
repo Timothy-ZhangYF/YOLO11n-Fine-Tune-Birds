@@ -97,3 +97,7 @@ To maximize student performance without adding runtime inference latency, traini
 * **Frameworks:** Ultralytics YOLO11, PyTorch, CUDA
 * **Hardware:** NVIDIA A100 SXM4 (Cloud Training) $\to$ Target: ARM-based Edge SBCs
 * **Data Pipelines:** Python, NumPy, Matplotlib, Custom OpenCV curation tooling
+
+## Code
+
+https://colab.research.google.com/drive/1wiaEctOBlE-s_Pyq4gjT5Fblmw-k7mvq?usp=sharing 
