@@ -25,8 +25,6 @@ This project explores the possibility to pushes a single-class edge-ready **YOLO
 
 Achieving robust generalizability required building a dataset that balances taxonomy diversity, contextual backgrounds, and clean ground-truth annotations.
 
-*[IMAGE PLACEHOLDER: Visual flow diagram showing dataset progression from NABirds (V1) to COCO-Birds (V2), Multi-Source Fusion (V3), and Final Curated Dataset (V3.1)]*
-
 ### Dataset Curation
 
 * **V1: Cornel NABirds (5.5k images)**
@@ -34,11 +32,25 @@ Achieving robust generalizability required building a dataset that balances taxo
   * *Limitation:* Dominated by centered wildlife portraits with single subjects. Models trained here failed on real-world scenes with scale variation, background clutter, and flocks.
 * **V2: COCO Birds Only (3.3k images)**
   * *Characteristics:* Excellent real-world "in-context" complexity (literally in the name of COCO).
+  * *Improvement:* Realized that COCO dataset has "crowd" labels which puts one box over a flock, this is unwanted and disabled in this version.
   * *Limitation:* Limited species diversity (over-indexed on common waterfowl, pigeons, and parrots) and insufficient dataset volume for zero-shot species generalization.
+
+<p align="center">
+  <strong>Unwanted Flock Bounding Boxes</strong>
+  <br><br>
+  <img src="Images/Crowd_Labels.png" alt="Demo" style="width: 100%;" />
+</p>
+
 * **V3: Multi-Source Fusion (10.4k images)**
   * *Composition:* NABirds (5 images $\times$ 555 classes = 2,775) + COCO Birds (3,362) + Google Open Images V7 Human-Verified Splits (4,292).
-  * *Improvement:* Realized that COCO dataset has "crowd" labels which puts one box over a flock, this is unwanted and disabled in this version.
   * *Limitation:* OIV7 "human labels" suffered from severe label noise (offensively bad), including missed foreground subjects, duplicate boxes, and spurious ground truth (e.g., bats, cooked turkeys).
+
+<p align="center">
+  <strong>Horrible Labels</strong>
+  <br><br>
+  <img src="Images/Joke.PNG" alt="Demo" style="width: 100%;" />
+</p>
+
 * **V3.1: Final Curated Dataset (12,264 images)**
   * *Pruning:* Built a rapid GUI triage tool to filter out >100 of the worst miss-labels from OIV7.
   * *Hard Negative Mining:* Added **2,000 pure background images** (COCO negative frames: vehicles, furniture, landscapes) to aggressively suppress false-positive background activations.
