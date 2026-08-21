@@ -38,7 +38,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 <p align="center">
   <strong>Unwanted Flock Bounding Boxes</strong>
   <br><br>
-  <img src="Images/Crowd_Labels.png" alt="Demo" style="width: 100%;" />
+  <img src="Images/Crowd.png" alt="Demo" style="width: 80%;" />
 </p>
 
 * **V3: Multi-Source Fusion (10.4k images)**
@@ -48,7 +48,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 <p align="center">
   <strong>Horrible Labels</strong>
   <br><br>
-  <img src="Images/Joke.PNG" alt="Demo" style="width: 100%;" />
+  <img src="Images/Joke.PNG" alt="Demo" style="width: 80%;" />
 </p>
 
 * **V3.1: Final Curated Dataset (12,264 images)**
