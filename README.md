@@ -5,7 +5,7 @@ Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters)
 <p align="center">
   <strong>Modern Flagship Camera AI Tracking AF</strong>
   <br><br>
-  <img src="Images/DSLR_Demo.gif" alt="Demo" style="width: 90%;" />
+  <img src="Images/DSLR_Demo.gif" alt="Demo" style="width: 150%;" />
 </p>
 
 
