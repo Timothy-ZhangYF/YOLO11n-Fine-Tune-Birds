@@ -13,7 +13,7 @@ Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters)
 <p align="center">
   <strong>Modern Flagship Camera AI Tracking AF</strong>
   <br><br>
-  <img src="Images/DSLR_Demo.gif" alt="Demo" style="width: 150%;" />
+  <img src="Images/DSLR_Demo.gif" alt="Demo" style="width: 100%;" />
 </p>
 
 
@@ -21,7 +21,7 @@ Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters)
 
 ## Motivation & Objectives
 
-This project explores the possibility to pushes a single-class edge-ready **YOLO11n** to match and surpass baseline general purpose **YOLO11s** and **YOLO11m** performance while remaining lightweight enough for MCU/SBC deployment (such as a Raspberry Pi). Birds represent a challenging computer vision target due to extreme variations in morphology, plumage patterns, pose, scale (macro close-ups vs. distant flock specks), and occlusion in foliage. 
+This project explores the possibility of pushing a single-class edge-ready **YOLO11n** to match and surpass baseline general purpose **YOLO11s** and **YOLO11m** performance while remaining lightweight enough for MCU/SBC deployment (such as a Raspberry Pi). Birds represent a challenging computer vision target due to extreme variations in morphology, plumage patterns, pose, scale (macro close-ups vs. distant flock specks), and occlusion in foliage. 
 
 * **Target Architecture:** `YOLO11n` (Nano) for ultra-low-power edge inference.
 * **Core Benchmark:** Outperform standard baseline `YOLO11s` / `YOLO11m` on mAP50 & mAP50-95.
@@ -35,7 +35,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 
 ### Dataset Curation
 
-* **V1: Cornel NABirds (5.5k images)**
+* **V1: Cornell NABirds (5.5k images)**
   * *Characteristics:* 100% human-verified species-level taxonomy (Partial dataset 10 images $\times$ 555 classes).
   * *Limitation:* Dominated by centered wildlife portraits with single subjects. Models trained here failed on real-world scenes with scale variation, background clutter, and flocks.
 * **V2: COCO Birds Only (3.3k images)**
