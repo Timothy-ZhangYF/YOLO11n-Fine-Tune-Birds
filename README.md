@@ -1,6 +1,6 @@
 # YOLO11n Edge Bird Detector: Fine-Tuning & Knowledge Distillation
 
-Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters). Inspired by modern camera autofocus systems (e.g., Sony AI-powered autofocus), this project explores the possibility to pushes an edge-ready architecture to match and surpass baseline general purpose **YOLO11s** and **YOLO11m** performance while remaining lightweight enough for MCU/SBC deployment (such as a Raspberry Pi).
+Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters). Inspired by modern camera autofocus systems (e.g., Sony AI-powered autofocus).
 
 <p align="center">
   <strong>Modern Flagship Camera AI Tracking AF</strong>
@@ -13,7 +13,7 @@ Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters)
 
 ## Motivation & Objectives
 
-Birds represent a challenging computer vision target due to extreme variations in morphology, plumage patterns, pose, scale (macro close-ups vs. distant flock specks), and occlusion in foliage. 
+This project explores the possibility to pushes a single-class edge-ready **YOLO11n** to match and surpass baseline general purpose **YOLO11s** and **YOLO11m** performance while remaining lightweight enough for MCU/SBC deployment (such as a Raspberry Pi). Birds represent a challenging computer vision target due to extreme variations in morphology, plumage patterns, pose, scale (macro close-ups vs. distant flock specks), and occlusion in foliage. 
 
 * **Target Architecture:** `YOLO11n` (Nano) for ultra-low-power edge inference.
 * **Core Benchmark:** Outperform standard baseline `YOLO11s` / `YOLO11m` on ALL metrics.
