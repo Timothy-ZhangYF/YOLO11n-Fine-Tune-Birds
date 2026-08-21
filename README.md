@@ -1,10 +1,11 @@
 # YOLO11n Edge Bird Detector: Fine-Tuning & Knowledge Distillation
 
-![YOLO11](https://img.shields.io/badge/Ultralytics-YOLO11-blue?style=flat-square)
-![PyTorch](https://img.shields.io/badge/Framework-PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![CUDA](https://img.shields.io/badge/Compute-NVIDIA%20A100-76B900?style=flat-square&logo=nvidia&logoColor=white)
-![OpenCV](https://img.shields.io/badge/Vision-OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
-![Target](https://img.shields.io/badge/Target-ARM%20Edge%20SBC-0091BD?style=flat-square)
+[![Model](https://img.shields.io/badge/Model-YOLO11n-blue)](https://github.com/ultralytics/ultralytics)
+[![Framework](https://img.shields.io/badge/Framework-PyTorch%20%7C%20CUDA-EE4C2C)](https://pytorch.org/)
+[![Compute](https://img.shields.io/badge/Compute-NVIDIA%20A100-76B900)](https://www.nvidia.com/)
+[![Vision](https://img.shields.io/badge/Vision-OpenCV%20%7C%20FiftyOne-5C3EE8)]()
+[![Target](https://img.shields.io/badge/Target-ARM%20Edge%20SBC-brightgreen)]()
+[![Language](https://img.shields.io/badge/Language-Python%203.12-3776AB)](https://www.python.org/)
 
 Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters). Inspired by modern camera autofocus systems (e.g., Sony AI-powered autofocus).
 
