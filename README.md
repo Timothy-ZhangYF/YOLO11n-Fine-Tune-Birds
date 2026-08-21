@@ -63,7 +63,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 
 ---
 
-## Training Strategy & Hyperparameter Optimization
+## Fine-Tuning Strategy & Hyperparameter Optimization
 
 ### 1. Full-Backbone Fine-Tuning
 Given the ~12.2k image volume, training was conducted with an **unfrozen backbone** (`freeze=0`) to allow low-level convolutional kernels and high-level attention heads to specialize fully on bird feature maps.
@@ -100,4 +100,4 @@ To maximize student performance without adding runtime inference latency, traini
 
 ## Code
 
-https://colab.research.google.com/drive/1wiaEctOBlE-s_Pyq4gjT5Fblmw-k7mvq?usp=sharing 
+[Link to training Colab (Data included)](https://colab.research.google.com/drive/1wiaEctOBlE-s_Pyq4gjT5Fblmw-k7mvq?usp=sharing)
