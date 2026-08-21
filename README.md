@@ -2,9 +2,10 @@
 
 [![Model](https://img.shields.io/badge/Model-YOLO11n-blue)](https://github.com/ultralytics/ultralytics)
 [![Framework](https://img.shields.io/badge/Framework-PyTorch%20%7C%20CUDA-EE4C2C)](https://pytorch.org/)
+[![Optimization](https://img.shields.io/badge/Method-Fine--Tuning%20%7C%20Distillation-purple)]()
 [![Compute](https://img.shields.io/badge/Compute-NVIDIA%20A100-76B900)](https://www.nvidia.com/)
-[![Vision](https://img.shields.io/badge/Vision-OpenCV%20%7C%20FiftyOne-5C3EE8)]()
-[![Target](https://img.shields.io/badge/Target-ARM%20Edge%20SBC-brightgreen)]()
+[![Environment](https://img.shields.io/badge/Environment-Google%20Colab-F9AB00?logo=googlecolab&logoColor=white)](https://colab.research.google.com/)
+[![Data](https://img.shields.io/badge/Data-FiftyOne-FF6F00)](https://voxel51.com/fiftyone/)
 [![Language](https://img.shields.io/badge/Language-Python%203.12-3776AB)](https://www.python.org/)
 
 Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters). Inspired by modern camera autofocus systems (e.g., Sony AI-powered autofocus).
