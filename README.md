@@ -94,7 +94,7 @@ To evaluate real-world generalizability, models were benchmarked on a balanced *
 * **1,000 images:** Stratified random sample from NABirds and Open Images V7
 * **100 images:** Pure background negatives (urban, indoor, and landscape scenes)
 
-Inference latency was benchmarked at native $640\text{px}$ resolution on an **NVIDIA Tesla T4 GPU** (batch size = 1, fp16).
+Inference latency was benchmarked at native $640\text{px}$ resolution on an **Intel(R) Xeon(R) CPU @ 2.00GHz**.
 
 
 ### Performance Comparison
@@ -110,7 +110,7 @@ Inference latency was benchmarked at native $640\text{px}$ resolution on an **NV
 
 ### Key Takeaways
 
-* **Decisive Victory Over YOLO11s:** The fine-tuned Nano model comfortably outperforms the 3.6× larger baseline **YOLO11s** across every single metric, including a **$+3.3\%$ gain in strict localization ($\text{mAP@50-95}$)** while running at **more than double the framerate** ($3.15\text{ ms vs. } 7.37\text{ ms}$).
+* **Decisive Victory Over YOLO11s:** The fine-tuned Nano model comfortably outperforms the 3.6× larger baseline **YOLO11s** across every single metric, including a **$+3.3\%$ gain in strict localization ($\text{mAP@50-95}$)** while running at **more than double the framerate** ($139.14\text{ ms vs. } 330.12\text{ ms}$).
 * **Punching Above Its Weight Class (Matching YOLO11m):** While the original objective was simply to exceed Small-tier accuracy, the optimized Nano model directly rivals and beats the **$20.0\text{M}$ parameter YOLO11m** in both Precision ($0.947\text{ vs. } 0.941$) and bounding box IoU quality ($\text{mAP@50-95: } 0.700\text{ vs. } 0.693$)—delivering this performance at **$6.8\times$ the inference speed** with an **$87\%$ parameter reduction**.
 * **Next Milestone — Distillation Beyond YOLO11m:** With standalone fine-tuning having saturated Nano's architectural capacity at $640\text{px}$, the next phase leverages **feature-based Knowledge Distillation** from the Medium teacher to bridge the remaining recall gap and push Nano toward **YOLO11l ($25.3\text{M}$ params)** localization accuracy on edge silicon.
 
