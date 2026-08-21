@@ -1,15 +1,10 @@
 # YOLO11n Edge Bird Detector: Fine-Tuning & Knowledge Distillation
 
-<div align="center">
-
-![YOLO11](https://img.shields.io/badge/YOLO11-Ultralytics-00ffff?style=for-the-badge&logo=yolo&logoColor=black)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![CUDA](https://img.shields.io/badge/NVIDIA%20CUDA-A100%20SXM4-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
-![Target Edge](https://img.shields.io/badge/Target-ARM%20Edge%20SBC-0091BD?style=for-the-badge&logo=arm&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-
-</div>
+![YOLO11](https://img.shields.io/badge/Ultralytics-YOLO11-blue?style=flat-square)
+![PyTorch](https://img.shields.io/badge/Framework-PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![CUDA](https://img.shields.io/badge/Compute-NVIDIA%20A100-76B900?style=flat-square&logo=nvidia&logoColor=white)
+![OpenCV](https://img.shields.io/badge/Vision-OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
+![Target](https://img.shields.io/badge/Target-ARM%20Edge%20SBC-0091BD?style=flat-square)
 
 Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters). Inspired by modern camera autofocus systems (e.g., Sony AI-powered autofocus).
 
