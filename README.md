@@ -55,6 +55,12 @@ Achieving robust generalizability required building a dataset that balances taxo
   * *Pruning:* Built a rapid GUI triage tool to filter out >100 of the worst miss-labels from OIV7.
   * *Hard Negative Mining:* Added **2,000 pure background images** (COCO negative frames: vehicles, furniture, landscapes) to aggressively suppress false-positive background activations.
 
+<p align="center">
+  <strong>Final Dataset</strong>
+  <br><br>
+  <img src="Images/Final_Dataset.PNG" alt="Demo" style="width: 80%;" />
+</p>
+
 ---
 
 ## Training Strategy & Hyperparameter Optimization
