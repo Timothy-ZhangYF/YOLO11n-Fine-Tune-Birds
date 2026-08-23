@@ -61,23 +61,18 @@ Achieving robust generalizability required building a dataset that balances taxo
 
 * **V4: Pruning + background Dataset (12,264 images)**
   * *Pruning:* Built a rapid GUI triage tool to filter out >100 of the worst miss-labels from OIV7.
-  * *Hard Negative Mining:* Added **2,000 pure background images** (COCO negative frames: vehicles, furniture, landscapes) to aggressively suppress false-positive background activations.
+  * *Negative Mining:* Added **2,000 pure background images** (COCO negative frames: vehicles, furniture, landscapes) to aggressively suppress false-positive background activations.
 
 <p align="center">
-  <strong>Final Dataset</strong>
+  <strong>Pre-Final Dataset</strong>
   <br><br>
   <img src="Images/Final_Dataset.PNG" alt="Demo" style="width: 80%;" />
 </p>
 
-* **V4.1: Targeted dataset tuning (12,264 images)**
-  * *Filter:* Notice the model's tendency to false-trigger on large objects and tiny blurry specs, deleted the full size boxes (out of frame) and tiny boxes (below detection capabilities).
-  * *Hard Negative Mining:* Added **2,000 pure background images** (COCO negative frames: vehicles, furniture, landscapes) to aggressively suppress false-positive background activations.
+* **V4.1: Targeted Patches**
+  * *Filter:* Notice the model's tendency to false-trigger on large "filling frame" entities, and tiny blurry dark specs. Added a filter to remove boxes that are below 0.0625% of the frame (2.5% * 2.5%), and above 97.5% width or height (closeup birds out of frame).
+  * *Targeted Negative:* Swapped out random background to specific subjects like "cats"
 
-<p align="center">
-  <strong>Final Dataset</strong>
-  <br><br>
-  <img src="Images/Final_Dataset.PNG" alt="Demo" style="width: 80%;" />
-</p>
 
 ---
 
