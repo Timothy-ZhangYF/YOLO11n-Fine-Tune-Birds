@@ -69,7 +69,7 @@ Achieving robust generalizability required building a dataset that balances taxo
   <img src="Images/Final_Dataset.PNG" alt="Demo" style="width: 80%;" />
 </p>
 
-* **V4.1: Targeted Patches**
+* **V4.1: Targeted Patches (11,641 images)**
   * *Filter:* Notice the model's tendency to false-trigger on large "filling frame" entities, and tiny blurry dark specs. Added a filter to remove boxes that are below 0.0625% of the frame (2.5% * 2.5%), and above 97.5% width or height (closeup birds out of frame).
   * *Targeted Negative:* Sometimes trigger-happy on general subjects, swapped out random background to specific subjects like `cats`, `human`, `horse`, to ensure the detector triggers on birds, not just any subject.
 
@@ -79,17 +79,30 @@ Achieving robust generalizability required building a dataset that balances taxo
 ## Fine-Tuning Strategy & Hyperparameter Optimization
 
 ### 1. Full-Backbone Fine-Tuning
-Given the ~12.2k image volume, training was conducted with an **unfrozen backbone** (`freeze=0`) to allow low-level convolutional kernels and high-level attention heads to specialize fully on bird feature maps.
+Given the ~11.6k image volume, training was conducted with an **unfrozen backbone** (`freeze=0`) to allow low-level convolutional kernels and high-level attention heads to specialize fully on bird feature maps.
 
 ### 2. Hyperparameter & Loss Alignment
+
+Most of the time training was spent on tuning hyperparameters and augmentations, these settings alone often boosted mAP scores by 2+%. the nano model was used to explore and ablate as it was the fastest and therefore cheaper compute. 
+
 * **Optimizer Stability:** Lowered initial learning rates by an order of magnitude (`lr0=0.001` for MuSGD / `0.0001` for AdamW) to eliminate warmup shock and prevent catastrophic forgetting on pretrained weights. MuSGD was selected as it produced ~+1% better mAP scores at the cost of slightly slower training. 
 * **Domain-Specific Augmentation:**
   * *Spatial Restraint:* Restricted non-physical distortions (`flipud=0.0`, `degrees=0.0`, `perspective=0.0`). Birds rarely appear inverted or geometrically sheared in field conditions.
-  * *Scale Protection:* Capped `scale=0.5` and stabilized `mosaic=0.6` (`close_mosaic=0`) to prevent distant flock targets from shrinking subpixel.
+  * *Translation:* Enable `translate=0.1` to shift the images and prevent center bias, this turns out to be the sweet spot as any more will cause significant quality reduction (likely caused by birds being cut off)
+  * *Scale Protection:* Capped `scale=0.7` and set `mosaic=1` (`close_mosaic=0`) to prevent distant flock targets from shrinking sub-pixel, while ensuring multiple instances per image.
   * *Occlusion Regularization:* Tuned `erasing=0.1` and subtle HSV color jitter to simulate foliage occlusion and changing outdoor lighting conditions without destroying small bounding boxes.
+  
+---
 
+## Knowledge Distillation Pipeline *(WIP)*
+
+All training used the same augmentation and hyperparameters optimized in the previous section. To maximize student performance without adding runtime inference latency, training incorporates feature-based Knowledge Distillation (KD):
+
+1. **Teacher Model:** Train an optimized `YOLO11s` (Small, ~9M params) at $640\text{px}$ using identical dataset and augmentation to act as a high-capacity spatial feature reference. The Small size was selected based on the Ultralytics documentation recommendation (YOLO26).
+2. **Student Alignment:** Train `YOLO11n` using default intermediate neck-layer feature alignment (`dis=6.0`), forcing the Nano student to inherit the teacher’s sharp boundary definitions and low-contrast target heatmaps.
 
 ---
+
 
 ## Empirical Results & Standalone Benchmarks
 
@@ -123,14 +136,7 @@ Inference latency was benchmarked at native $640\text{px}$ resolution on an **In
 
 ---
 
-## Knowledge Distillation Pipeline *(WIP)*
 
-To maximize student performance without adding runtime inference latency, training incorporates feature-based Knowledge Distillation (KD):
-
-1. **Teacher Model:** Train an optimized `YOLO11m` (Medium, ~20M params) at $640\text{px}$ using identical dataset constraints to act as a high-capacity spatial feature reference.
-2. **Student Alignment:** Train `YOLO11n` using intermediate neck-layer feature alignment (`dis=6.0`), forcing the Nano student to inherit the teacher’s sharp boundary definitions and low-contrast target heatmaps.
-
----
 
 ## Code
 
