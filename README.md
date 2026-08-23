@@ -40,7 +40,7 @@ Achieving robust generalizability required building a dataset that balances taxo
   * *Limitation:* Dominated by centered wildlife portraits with single subjects. Models trained here failed on real-world scenes with scale variation, background clutter, and flocks.
 * **V2: COCO Birds Only (3.3k images)**
   * *Characteristics:* Excellent real-world "in-context" complexity (literally in the name of COCO).
-  * *Improvement:* Realized that COCO dataset has "crowd" labels which puts one box over a flock, this is unwanted and disabled in this version.
+  * *Improvement:* Realized that COCO dataset has "crowd" labels which puts one box over a flock, this is unwanted and disabled in later versions.
   * *Limitation:* Limited species diversity (over-indexed on common waterfowl, pigeons, and parrots) and insufficient dataset volume for zero-shot species generalization.
 
 <p align="center">
