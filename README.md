@@ -71,7 +71,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 
 * **V4.1: Targeted Patches**
   * *Filter:* Notice the model's tendency to false-trigger on large "filling frame" entities, and tiny blurry dark specs. Added a filter to remove boxes that are below 0.0625% of the frame (2.5% * 2.5%), and above 97.5% width or height (closeup birds out of frame).
-  * *Targeted Negative:* Swapped out random background to specific subjects like "cats"
+  * *Targeted Negative:* Sometimes trigger-happy on general subjects, swapped out random background to specific subjects like `cats`, `human`, `horse`, to ensure the detector triggers on birds, not just any subject.
 
 
 ---
