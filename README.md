@@ -156,12 +156,12 @@ To evaluate real-world generalizability, models were benchmarked on the balanced
 
 ### 1. Defeating the Target Baseline (`YOLO11s`) Across the Board
 * **Objective Exceeded:** The original design target was to bridge the gap to `YOLO11s`. The distilled Nano model outright exceeded it across every evaluation metric, boosting **Precision (`+1.5%`)**, **Recall (`+1.2%`)**, **mAP@50 (`+1.8%`)**, and **mAP@50-95 (`+4.0%`)**.
-* **Edge Efficiency:** This performance gain comes alongside no loss in overall latency, unlocking a sustained **$128\text{ FPS}$** pipeline suitable for real-time edge hardware.
+
 
 ### 2. Surpassing `YOLO11m` on mAP
 * **Reach-Goal Achieved:** The distilled Nano beat standard `YOLO11m` in both **mAP@50 (`0.951` vs `0.943`)** and **mAP@50-95 (`0.760` vs `0.745`)**, running at nearly **$4\times$ the frame rate ($128\text{ FPS}$ vs $34.4\text{ FPS}$)**.
 * **The Recall vs. Precision Behavior:** While the model achieved superior Precision (**`0.961` vs `0.941`**), it showed lower default snapshot Recall (**`0.874` vs `0.891`**). Knowledge distillation calibrated the student head to avoid false-positive background triggers, outputting conservative probabilities on heavily occluded instances. 
-* **Operational Flexibility:** In real-time tracking applications, dropping the deployment cutoff to `conf = 0.4` unlocks **`0.891` recall at `0.942` precision**, which matches/exceeds Medium's coverage while maintaining a massive speed advantage.
+* **Operational Flexibility:** In real-time applications, dropping the deployment cutoff to `conf = 0.4` unlocks **`0.891` recall at `0.942` precision**, which matches/exceeds Medium's coverage while maintaining a massive speed advantage.
 
 ```
 Conf    Precision   Recall      F1          mAP@50      mAP@50-95
