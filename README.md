@@ -13,7 +13,7 @@ Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters)
 <p align="left">
   <strong>DSLR AI Tracking AF vs Raspberry Pi Deploy Demo</strong>
   <br><br>
-  <img src="Images/CameraAF.gif" alt="Demo" style="width: 100%;" />
+  <img src="Images/CameraAF.gif" alt="Demo" style="width: 80%;" />
   <img src="Images/raspi_demo.gif" alt="Pi Demo" style="width: 80%;" />
 </p>
 
