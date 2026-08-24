@@ -9,12 +9,11 @@
 [![Language](https://img.shields.io/badge/Language-Python%203.12-3776AB)](https://www.python.org/)
 
 Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters). Inspired by modern camera autofocus systems (e.g., Sony AI-powered autofocus).
-
 <p align="center">
-  <strong>DSLR AI Tracking AF vs Raspberry Pi Deploy Demo</strong>
+  <strong>DSLR AI Tracking AF vs Raspberry Pi Deployment Demo</strong>
   <br><br>
-  <img src="Images/CameraAF.gif" alt="Demo" style="width: 40%;" />
-  <img src="Images/raspi_demo.gif" alt="Pi Demo" style="width: 40%;" />
+  <img src="Images/CameraAF.gif" alt="Demo" width="48%" />
+  <img src="Images/raspi_demo.gif" alt="Pi Demo" width="48%" />
 </p>
 
 
