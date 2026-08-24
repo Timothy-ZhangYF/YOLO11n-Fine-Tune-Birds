@@ -92,13 +92,13 @@ Most of the time training was spent on tuning hyperparameters and augmentations,
   * *Scale Protection:* Capped `scale=0.7` and set `mosaic=1` (`close_mosaic=0`) to prevent distant flock targets from shrinking sub-pixel, while ensuring multiple instances per image.
   * *Occlusion Regularization:* Tuned `erasing=0.1` and subtle HSV color jitter to simulate foliage occlusion and changing outdoor lighting conditions without destroying small bounding boxes.
 
-'''
+```
 Ultralytics 8.4.126 🚀 Python-3.13.15 torch-2.11.0+cu128 CUDA:0 (NVIDIA A100-SXM4-40GB, 40441MiB)
 YOLO11n summary (fused): 101 layers, 2,582,347 parameters, 0 gradients, 6.4 GFLOPs
                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 19/19 4.0it/s 4.7s
                    all       1173       1476      0.952      0.884      0.947      0.755
 Speed: 0.1ms preprocess, 0.6ms inference, 0.0ms loss, 0.8ms postprocess per image
-'''
+```
 ---
 
 ## Knowledge Distillation Pipeline *(WIP)*
