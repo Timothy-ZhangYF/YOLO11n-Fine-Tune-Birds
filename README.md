@@ -158,25 +158,35 @@ To evaluate real-world generalizability, models were benchmarked on the balanced
 
 ---
 
-### 2. Surpassing `YOLO11m` on Localization & Precision
-* **Accuracy Trade-off:** The distilled Nano beat standard `YOLO11m` in both **mAP@50 (`0.951` vs `0.943`)** and **mAP@50-95 (`0.760` vs `0.745`)**, running at nearly **$4\times$ the frame rate ($128\text{ FPS}$ vs $34.4\text{ FPS}$)**.
+### 2. Surpassing `YOLO11m` on mAP
+* **Reach-Goal Achieved:** The distilled Nano beat standard `YOLO11m` in both **mAP@50 (`0.951` vs `0.943`)** and **mAP@50-95 (`0.760` vs `0.745`)**, running at nearly **$4\times$ the frame rate ($128\text{ FPS}$ vs $34.4\text{ FPS}$)**.
 * **The Recall vs. Precision Behavior:** While the model achieved superior Precision (**`0.961` vs `0.941`**), it showed lower default snapshot Recall (**`0.874` vs `0.891`**). Knowledge distillation calibrated the student head to avoid false-positive background triggers, outputting conservative probabilities on heavily occluded instances. 
-* **Operational Flexibility:** In real-time tracking applications, dropping the deployment cutoff to `conf = 0.15` unlocks **$92.8\%$ true recall** at $0.841$ precision—exceeding Medium's coverage while maintaining a massive speed advantage.
+* **Operational Flexibility:** In real-time tracking applications, dropping the deployment cutoff to `conf = 0.4` unlocks **$89.1\%$ true recall** at $0.942$, which matches/exceeds Medium's coverage while maintaining a massive speed advantage.
+
+```
+Conf    Precision   Recall      F1          mAP@50      mAP@50-95
+-----------------------------------------------------------------
+0.30    0.917       0.900       0.909       0.950       0.758       
+0.33    0.928       0.897       0.912       0.950       0.758       
+0.35    0.934       0.894       0.913       0.950       0.758       
+0.38    0.941       0.892       0.916       0.950       0.758       
+0.40    0.942       0.891       0.916       0.950       0.758       
+0.42    0.945       0.888       0.915       0.950       0.758       
+0.45    0.949       0.883       0.915       0.950       0.758       
+0.47    0.953       0.880       0.915       0.950       0.758       
+0.50    0.959       0.876       0.916       0.950       0.758   
+-----------------------------------------------------------------
+Max F1 at Conf = 0.55: Precision = 0.970 | Recall = 0.871 | F1 = 0.918
+```
 
 ---
 
-### 3. Matching the Flagship `YOLO11l` at a Fraction of the Compute
-* **Large-Model Parity:** The distilled Nano achieved parity with the **$25.3\text{M}$ parameter `YOLO11l`** on **mAP@50 (`0.951`)** and effectively matched its high-IoU localization on **mAP@50-95 (`0.760` vs `0.762`)**.
+### 3. Matching the `YOLO11l`
+* **Pleasant surprise:** While never the goal (or thought possible) The distilled Nano achieved parity with the **$25.3\text{M}$ parameter `YOLO11l`** on **mAP@50 (`0.951`)** and effectively matched its high-IoU localization on **mAP@50-95 (`0.760` vs `0.762`)**.
 * **Compute Compression:**
   * **Parameter Footprint:** $2.58\text{M}$ vs $25.3\text{M}$ ($\sim 90\%$ reduction)
-  * **FLOPs:** $6.4\text{ GFLOPs}$ vs $86.9\text{ GFLOPs}$ ($13.5\times$ compute reduction)
   * **Pipeline Latency:** $7.81\text{ ms}$ vs $36.03\text{ ms}$ ($4.6\times$ throughput speedup)
 * **Conclusion:** For dedicated single-class embedded vision (e.g., camera autofocus tracking, wildlife traps, drone vision), architectural scale can be substituted with targeted data cleaning and teacher-student distillation without sacrificing bounding-box accuracy.
-
-* 
-### Key Takeaways
-
-
 
 
 ---
