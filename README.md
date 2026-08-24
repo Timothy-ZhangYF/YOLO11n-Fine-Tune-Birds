@@ -46,7 +46,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 <p align="center">
   <strong>Unwanted Flock Bounding Boxes</strong>
   <br><br>
-  <img src="Images/Crowd.png" alt="Demo" style="width: 80%;" />
+  <img src="Images/Crowd.png" alt="Crowd" style="width: 80%;" />
 </p>
 
 * **V3: Multi-Source Fusion (10.4k images)**
@@ -56,7 +56,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 <p align="center">
   <strong>Horrible Labels</strong>
   <br><br>
-  <img src="Images/Joke.PNG" alt="Demo" style="width: 80%;" />
+  <img src="Images/Joke.PNG" alt="Joke" style="width: 80%;" />
 </p>
 
 * **V4: Pruning + background Dataset (12,264 images)**
@@ -66,7 +66,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 <p align="center">
   <strong>Pre-Final Dataset</strong>
   <br><br>
-  <img src="Images/Final_Dataset.PNG" alt="Demo" style="width: 80%;" />
+  <img src="Images/Final_Dataset.PNG" alt="Dataset" style="width: 80%;" />
 </p>
 
 * **V4.1: Targeted Patches (11,641 images)**
@@ -127,7 +127,7 @@ This resulted in `+0.3%` and `+0.5%` in mAP50 and mAP50-95 respectively.
 ## Empirical Results & Standalone Benchmarks
 
 ### Validation Setup
-To evaluate real-world generalizability, models were benchmarked on the balanced **1,173-image validation set** separate from the training set.
+To evaluate real-world generalizability, models were benchmarked on the balanced **1,173-image validation set** separate from the training set. Specifically, the COCO portion of the `val` set also came from the validation set of COCO, ensuring a fair comparison.
 
 ### Performance Comparison
 
@@ -139,6 +139,11 @@ To evaluate real-world generalizability, models were benchmarked on the balanced
 | yolo11l.pt | 0.953       | 0.888    | 0.951    | 0.762       | 36.03                 | 27.8  |
 | Fine-Tuned | 0.961       | 0.874    | 0.951    | 0.76        | 7.81                  | 128   |
 
+<p align="center">
+  <strong>Benchmark Results</strong>
+  <br><br>
+  <img src="Images/results.jpg" alt="Benchmark" style="width: 80%;" />
+</p>
 
 ### Key Takeaways
 
