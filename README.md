@@ -79,11 +79,11 @@ Achieving robust generalizability required building a dataset that balances taxo
 ## Fine-Tuning Strategy & Hyperparameter Optimization
 
 ### 1. Full-Backbone Fine-Tuning
-Given the ~11.6k image volume, training was conducted with an **unfrozen backbone** (`freeze=0`) to allow low-level convolutional kernels and high-level attention heads to specialize fully on bird feature maps.
+Given the ~11.6k image volume, training was conducted with an **unfrozen backbone** (`freeze=0`) to allow low-level convolutional kernels and high-level attention heads to specialize fully on bird feature maps. Without any optimizations, a simple fine-tune with default parameters easily pushed both mAP 50 by `'+2%` and mAP50-95 by `'+5%`.
 
 ### 2. Hyperparameter & Loss Alignment
 
-Most of the time training was spent on tuning hyperparameters and augmentations, these settings alone often boosted mAP scores by 2+%. The nano model was used to explore and ablate as it was the fastest and therefore required less compute. 
+Most of the time training was spent on tuning hyperparameters and augmentations, these settings alone often further boosted mAP scores by`'+2%`. The nano model was used to explore and ablate as it was the fastest and therefore required less compute. 
 
 * **Optimizer Stability:** Lowered initial learning rates by an order of magnitude (`lr0=0.001` for MuSGD / `0.0001` for AdamW) to eliminate warmup shock and prevent catastrophic forgetting on pretrained weights. MuSGD was selected as it produced ~+1% better mAP scores at the cost of slightly slower training. 
 * **Domain-Specific Augmentation:**
