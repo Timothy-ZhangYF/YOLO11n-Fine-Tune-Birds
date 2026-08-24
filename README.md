@@ -10,7 +10,7 @@
 
 Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters). Inspired by modern camera autofocus systems (e.g., Sony AI-powered autofocus).
 
-<p align="left">
+<p align="center">
   <strong>DSLR AI Tracking AF vs Raspberry Pi Deploy Demo</strong>
   <br><br>
   <img src="Images/CameraAF.gif" alt="Demo" style="width: 40%;" />
