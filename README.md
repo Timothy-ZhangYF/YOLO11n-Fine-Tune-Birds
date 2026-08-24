@@ -71,7 +71,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 
 * **V4.1: Targeted Patches (11,641 images)**
   * *Filter:* Notice the model's tendency to false-trigger on large "filling frame" entities, and tiny blurry dark specs. Added a filter to remove boxes that are below 0.0625% of the frame (2.5% * 2.5%), and above 97.5% width or height (closeup birds out of frame).
-  * *Targeted Negative:* Sometimes trigger-happy on general subjects, swapped out random background to specific subjects like `cats`, `human`, `horse`, to ensure the detector triggers on birds, not just any subject.
+  * *Targeted Negative:* Sometimes trigger-happy on general subjects, swapped out random background to specific subjects like `cat`, `person`, `horse`. to ensure the detector triggers on birds, not just any subject.
 
 
 ---
@@ -83,7 +83,7 @@ Given the ~11.6k image volume, training was conducted with an **unfrozen backbon
 
 ### 2. Hyperparameter & Loss Alignment
 
-Most of the time training was spent on tuning hyperparameters and augmentations, these settings alone often boosted mAP scores by 2+%. the nano model was used to explore and ablate as it was the fastest and therefore cheaper compute. 
+Most of the time training was spent on tuning hyperparameters and augmentations, these settings alone often boosted mAP scores by 2+%. The nano model was used to explore and ablate as it was the fastest and therefore required less compute. 
 
 * **Optimizer Stability:** Lowered initial learning rates by an order of magnitude (`lr0=0.001` for MuSGD / `0.0001` for AdamW) to eliminate warmup shock and prevent catastrophic forgetting on pretrained weights. MuSGD was selected as it produced ~+1% better mAP scores at the cost of slightly slower training. 
 * **Domain-Specific Augmentation:**
@@ -103,7 +103,7 @@ YOLO11n summary (fused): 101 layers, 2,582,347 parameters, 0 gradients, 6.4 GFLO
 
 All training used the same augmentation and hyperparameters optimized in the previous section. To maximize student performance without adding runtime inference latency, training incorporates feature-based Knowledge Distillation (KD):
 
-1. **Teacher Model:** Train an optimized `YOLO11s` (Small, ~9M params) at $640\text{px}$ using identical dataset and augmentation to act as a high-capacity spatial feature reference. The Small size was selected based on the Ultralytics documentation recommendation (YOLO26).\
+1. **Teacher Model:** Train an optimized `YOLO11s` (Small, ~9M params) at $640\text{px}$ using identical dataset and augmentation to act as a high-capacity spatial feature reference. The Small size was selected based on the Ultralytics documentation recommendation (YOLO26).
 
 ```
 YOLO11s summary (fused): 101 layers, 9,413,187 parameters, 0 gradients, 21.4 GFLOPs
@@ -111,7 +111,7 @@ YOLO11s summary (fused): 101 layers, 9,413,187 parameters, 0 gradients, 21.4 GFL
                    all       1173       1476      0.955      0.894      0.951      0.773
 ```
 
-3. **Student Alignment:** Train `YOLO11n` using default intermediate neck-layer feature alignment (`dis=6.0`), forcing the Nano student to inherit the teacher’s sharp boundary definitions and low-contrast target heatmaps.
+2. **Student Alignment:** Train `YOLO11n` using default intermediate neck-layer feature alignment (`dis=6.0`), forcing the Nano student to inherit the teacher’s sharp boundary definitions and low-contrast target heatmaps.
 
 ```
 YOLO11n summary (fused): 101 layers, 2,582,347 parameters, 0 gradients, 6.4 GFLOPs
@@ -152,9 +152,6 @@ To evaluate real-world generalizability, models were benchmarked on the balanced
 
 ### Key Takeaways
 
-* **Decisive Victory Over YOLO11s:** The fine-tuned Nano model comfortably outperforms the 3.6× larger baseline **YOLO11s** across every single metric, including a **$+3.3\%$ gain in strict localization ($\text{mAP@50-95}$)** while running at **more than double the framerate** ($139.14\text{ ms vs. } 330.12\text{ ms}$).
-* **Punching Above Its Weight Class (Matching YOLO11m):** While the original objective was simply to exceed Small-tier accuracy, the optimized Nano model directly rivals and beats the **$20.0\text{M}$ parameter YOLO11m** in both Precision ($0.947\text{ vs. } 0.941$) and bounding box IoU quality ($\text{mAP@50-95: } 0.700\text{ vs. } 0.693$)—delivering this performance at **$6.8\times$ the inference speed** with an **$87\%$ parameter reduction**.
-* **Next Milestone — Distillation Beyond YOLO11m:** With standalone fine-tuning having saturated Nano's architectural capacity at $640\text{px}$, the next phase leverages **feature-based Knowledge Distillation** from the Medium teacher to bridge the remaining recall gap and push Nano toward **YOLO11l ($25.3\text{M}$ params)** localization accuracy on edge silicon.
 
 
 
