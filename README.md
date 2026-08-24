@@ -131,6 +131,7 @@ To evaluate real-world generalizability, models were benchmarked on the balanced
 
 ### Performance Comparison
 
+<div align="center">
 | Model      | Precision   | Recall   | mAP@50   | mAP@50-95   | Total Pipeline (ms)   | FPS   |
 |:-----------|:------------|:---------|:---------|:------------|:----------------------|:------|
 | yolo11n.pt | 0.912       | 0.806    | 0.899    | 0.66        | 7.75                  | 129   |
@@ -138,6 +139,9 @@ To evaluate real-world generalizability, models were benchmarked on the balanced
 | yolo11m.pt | 0.941       | 0.891    | 0.943    | 0.745       | 29.08                 | 34.4  |
 | yolo11l.pt | 0.953       | 0.888    | 0.951    | 0.762       | 36.03                 | 27.8  |
 | Fine-Tuned | 0.961       | 0.874    | 0.951    | 0.76        | 7.81                  | 128   |
+  
+</div>
+
 
 <p align="center">
   <strong>Benchmark Results</strong>
