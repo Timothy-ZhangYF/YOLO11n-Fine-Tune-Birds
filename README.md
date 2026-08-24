@@ -19,7 +19,7 @@ Single-class real-time bird detector engineered on **YOLO11n** (2.6M parameters)
 <p align="center">
   <strong>Raspberry Pi Deploy Demo</strong>
   <br><br>
-  <img src="Images/raspi_demo.gif" alt="Pi Demo" style="width: 100%;" />
+  <img src="Images/raspi_demo.gif" alt="Pi Demo" style="width: 80%;" />
 </p>
 
 ---
