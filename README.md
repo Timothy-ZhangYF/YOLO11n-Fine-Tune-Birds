@@ -152,11 +152,11 @@ To evaluate real-world generalizability, models were benchmarked on the balanced
 
 ---
 
+## Key Takeaways & Architecture Analysis
+
 ### 1. Defeating the Target Baseline (`YOLO11s`) Across the Board
 * **Objective Exceeded:** The original design target was to bridge the gap to `YOLO11s`. The distilled Nano model outright exceeded it across every evaluation metric, boosting **Precision (`+1.5%`)**, **Recall (`+1.2%`)**, **mAP@50 (`+1.8%`)**, and **mAP@50-95 (`+4.0%`)**.
 * **Edge Efficiency:** This performance gain comes alongside no loss in overall latency, unlocking a sustained **$128\text{ FPS}$** pipeline suitable for real-time edge hardware.
-
----
 
 ### 2. Surpassing `YOLO11m` on mAP
 * **Reach-Goal Achieved:** The distilled Nano beat standard `YOLO11m` in both **mAP@50 (`0.951` vs `0.943`)** and **mAP@50-95 (`0.760` vs `0.745`)**, running at nearly **$4\times$ the frame rate ($128\text{ FPS}$ vs $34.4\text{ FPS}$)**.
@@ -178,8 +178,6 @@ Conf    Precision   Recall      F1          mAP@50      mAP@50-95
 -----------------------------------------------------------------
 Max F1 at Conf = 0.55: Precision = 0.970 | Recall = 0.871 | F1 = 0.918
 ```
-
----
 
 ### 3. Matching the `YOLO11l`
 * **Pleasant surprise:** While never the goal (or thought possible) The distilled Nano achieved parity with the **$25.3\text{M}$ parameter `YOLO11l`** on **mAP@50 (`0.951`)** and effectively matched its high-IoU localization on **mAP@50-95 (`0.760` vs `0.762`)**.
