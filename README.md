@@ -71,7 +71,7 @@ Achieving robust generalizability required building a dataset that balances taxo
 
 * **V4.1: Targeted Patches (11,641 images)**
   * *Filter:* Notice the model's tendency to false-trigger on large "filling frame" entities, and tiny blurry dark specs. Added a filter to remove boxes that are below 0.0625% of the frame (2.5% * 2.5%), and above 97.5% width or height (closeup birds out of frame).
-  * *Targeted Negative:* Sometimes trigger-happy on general subjects, swapped out random background to specific subjects like `cat`, `person`, `horse`. to ensure the detector triggers on birds, not just any subject.
+  * *Targeted Negative:* Sometimes trigger-happy on general subjects, swapped out random background to specific subjects like `cat`, `person`, `horse`... to ensure the detector triggers on birds, not just any subject.
 
 
 ---
@@ -180,7 +180,7 @@ Max F1 at Conf = 0.55: Precision = 0.970 | Recall = 0.871 | F1 = 0.918
 ```
 
 ### 3. Matching the `YOLO11l`
-* **Pleasant surprise:** While never the goal (or thought possible) The distilled Nano achieved parity with the **$25.3\text{M}$ parameter `YOLO11l`** on **mAP@50 (`0.951`)** and effectively matched its high-IoU localization on **mAP@50-95 (`0.760` vs `0.762`)**.
+* **Pleasant surprise:** While never the goal (or thought possible), the distilled Nano achieved parity with the **$25.3\text{M}$ parameter `YOLO11l`** on **mAP@50 (`0.951`)** and effectively matched its high-IoU localization on **mAP@50-95 (`0.760` vs `0.762`)**.
 * **Compute Compression:**
   * **Parameter Footprint:** $2.58\text{M}$ vs $25.3\text{M}$ ($\sim 90\%$ reduction)
   * **Pipeline Latency:** $7.81\text{ ms}$ vs $36.03\text{ ms}$ ($4.6\times$ throughput speedup)
