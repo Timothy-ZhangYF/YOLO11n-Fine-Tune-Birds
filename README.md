@@ -93,11 +93,9 @@ Most of the time training was spent on tuning hyperparameters and augmentations,
   * *Occlusion Regularization:* Tuned `erasing=0.1` and subtle HSV color jitter to simulate foliage occlusion and changing outdoor lighting conditions without destroying small bounding boxes.
 
 ```
-Ultralytics 8.4.126 🚀 Python-3.13.15 torch-2.11.0+cu128 CUDA:0 (NVIDIA A100-SXM4-40GB, 40441MiB)
 YOLO11n summary (fused): 101 layers, 2,582,347 parameters, 0 gradients, 6.4 GFLOPs
                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 19/19 4.0it/s 4.7s
                    all       1173       1476      0.952      0.884      0.947      0.755
-Speed: 0.1ms preprocess, 0.6ms inference, 0.0ms loss, 0.8ms postprocess per image
 ```
 ---
 
@@ -105,8 +103,21 @@ Speed: 0.1ms preprocess, 0.6ms inference, 0.0ms loss, 0.8ms postprocess per imag
 
 All training used the same augmentation and hyperparameters optimized in the previous section. To maximize student performance without adding runtime inference latency, training incorporates feature-based Knowledge Distillation (KD):
 
-1. **Teacher Model:** Train an optimized `YOLO11s` (Small, ~9M params) at $640\text{px}$ using identical dataset and augmentation to act as a high-capacity spatial feature reference. The Small size was selected based on the Ultralytics documentation recommendation (YOLO26).
-2. **Student Alignment:** Train `YOLO11n` using default intermediate neck-layer feature alignment (`dis=6.0`), forcing the Nano student to inherit the teacher’s sharp boundary definitions and low-contrast target heatmaps.
+1. **Teacher Model:** Train an optimized `YOLO11s` (Small, ~9M params) at $640\text{px}$ using identical dataset and augmentation to act as a high-capacity spatial feature reference. The Small size was selected based on the Ultralytics documentation recommendation (YOLO26).\
+
+```
+YOLO11s summary (fused): 101 layers, 9,413,187 parameters, 0 gradients, 21.4 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 19/19 1.2it/s 15.3s
+                   all       1173       1476      0.955      0.894      0.951      0.773
+```
+
+3. **Student Alignment:** Train `YOLO11n` using default intermediate neck-layer feature alignment (`dis=6.0`), forcing the Nano student to inherit the teacher’s sharp boundary definitions and low-contrast target heatmaps.
+
+```
+YOLO11n summary (fused): 101 layers, 2,582,347 parameters, 0 gradients, 6.4 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 19/19 1.6it/s 11.7s
+                   all       1173       1476      0.961      0.874       0.95       0.76
+```
 
 ---
 
