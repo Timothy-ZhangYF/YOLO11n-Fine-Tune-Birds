@@ -99,7 +99,7 @@ YOLO11n summary (fused): 101 layers, 2,582,347 parameters, 0 gradients, 6.4 GFLO
 ```
 ---
 
-## Knowledge Distillation Pipeline *(WIP)*
+## Knowledge Distillation Pipeline
 
 All training used the same augmentation and hyperparameters optimized in the previous section. To maximize student performance without adding runtime inference latency, training incorporates feature-based Knowledge Distillation (KD):
 
@@ -118,6 +118,8 @@ YOLO11n summary (fused): 101 layers, 2,582,347 parameters, 0 gradients, 6.4 GFLO
                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 19/19 1.6it/s 11.7s
                    all       1173       1476      0.961      0.874       0.95       0.76
 ```
+
+This resulted in `+0.3%` and `+0.5%` in mAP50 and mAP50-95 respectively. 
 
 ---
 
