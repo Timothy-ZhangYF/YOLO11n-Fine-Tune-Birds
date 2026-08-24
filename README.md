@@ -127,23 +127,17 @@ This resulted in `+0.3%` and `+0.5%` in mAP50 and mAP50-95 respectively.
 ## Empirical Results & Standalone Benchmarks
 
 ### Validation Setup
-To evaluate real-world generalizability, models were benchmarked on a balanced **1,225-image validation set** comprising:
-* **125 images:** COCO 2017 `val` split (pure in-context bird instances)
-* **1,000 images:** Stratified random sample from NABirds and Open Images V7
-* **100 images:** Pure background negatives (urban, indoor, and landscape scenes)
-
-Inference latency was benchmarked at native $640\text{px}$ resolution on an **Intel(R) Xeon(R) CPU @ 2.00GHz**.
-
+To evaluate real-world generalizability, models were benchmarked on the balanced **1,173-image validation set** separate from the training set.
 
 ### Performance Comparison
 
-| Model | Parameters | Precision ($P$) | Recall ($R$) | mAP@50 | mAP@50-95 | Inference Time (ms) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **YOLO11n (COCO Baseline)** | 2.6M | 0.904 | 0.735 | 0.834 | 0.610 | 124.78 |
-| **YOLO11s (COCO Baseline)** | 9.4M | 0.936 | 0.789 | 0.874 | 0.667 | 330.12 |
-| **YOLO11m (COCO Baseline)** | 20.0M | 0.941 | 0.818 | 0.888 | 0.693 | 954.92 |
-| **YOLO11l (COCO Baseline)** | 25.3M | 0.953 | 0.817 | 0.901 | 0.711 | 1225.71 |
-| **YOLO11n (Fine-Tuned)** | **2.6M** | **0.947** | **0.805** | **0.886** | **0.700** | **139.14** |
+| Model      | Precision   | Recall   | mAP@50   | mAP@50-95   | Total Pipeline (ms)   | FPS   |
+|:-----------|:------------|:---------|:---------|:------------|:----------------------|:------|
+| yolo11n.pt | 0.912       | 0.806    | 0.899    | 0.66        | 7.75                  | 129   |
+| yolo11s.pt | 0.946       | 0.862    | 0.932    | 0.72        | 12.92                 | 77.4  |
+| yolo11m.pt | 0.941       | 0.891    | 0.943    | 0.745       | 29.08                 | 34.4  |
+| yolo11l.pt | 0.953       | 0.888    | 0.951    | 0.762       | 36.03                 | 27.8  |
+| Fine-Tuned | 0.961       | 0.874    | 0.951    | 0.76        | 7.81                  | 128   |
 
 
 ### Key Takeaways
